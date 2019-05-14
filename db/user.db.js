@@ -1,7 +1,9 @@
 const axios = require("axios");
+const path = require("path");
+const { dbPORT, dbHOST} = require(path.resolve("config"));
 
 const api = axios.create({
-    baseURL: `http://localhost:3000/api/`
+    baseURL: `http://${dbHOST}:${dbPORT}/api/`
 })
 
 async function updateUser(userId, user) {
