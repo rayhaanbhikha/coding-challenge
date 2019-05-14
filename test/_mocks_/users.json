@@ -1,0 +1,23 @@
+[
+    {
+      "id": "24259589430",
+      "firstName": "john",
+      "lastName": "doe",
+      "email": "john_doe@domain.co.uk",
+      "activeStreams": 3
+    },
+    {
+      "id": "94378534532",
+      "firstName": "todd",
+      "lastName": "smith",
+      "email": "todd_smith@domain.co.uk",
+      "activeStreams": 0
+    },
+    {
+      "id": "53205852424",
+      "firstName": "scott",
+      "lastName": "doe",
+      "email": "scott_doel@domain.co.uk",
+      "activeStreams": 3
+    }
+  ]
