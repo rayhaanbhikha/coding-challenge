@@ -1,0 +1,1 @@
+cp db.orig.json db.json && json-server --host 0.0.0.0 db.json --routes routes.json
