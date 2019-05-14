@@ -7,6 +7,8 @@
     "test": "test"
   },
   "scripts": {
+    "dev": "node server",
+    "start": "NODE_ENV=production node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
