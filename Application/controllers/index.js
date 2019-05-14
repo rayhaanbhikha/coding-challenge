@@ -1,4 +1,5 @@
 module.exports = {
     home: require("./home"),
-    users: require("./users")
+    users: require("./users"),
+    video: require("./video")
 }

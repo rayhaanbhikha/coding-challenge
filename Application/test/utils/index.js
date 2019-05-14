@@ -37,7 +37,7 @@ function RequestWithUserIdParams(userId) {
     }
 }
 
-function RequestWithUserIdHeader(header, userId) {
+function RequestWithUserIdHeader(header, userId=null) {
     this.params = {
         userId
     }
