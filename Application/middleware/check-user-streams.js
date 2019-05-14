@@ -4,11 +4,11 @@ const { userIdHeader, concurrentStreamLimit } = require(path.resolve("config"));
 
 module.exports = async (req, res, next) => {
     try {
-        let userId = req.headers[userIdHeader]
+        let userId = req.headers[userIdHeader];
         let { activeStreams } = await User.getUserById(userId);
         if (activeStreams >= concurrentStreamLimit) {
             res.status(403);
-            res.send("Active stream limit reached.")
+            res.send("Active stream limit reached.");
         }
         next();
     } catch (err) {

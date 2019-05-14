@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
             res.status(200);
             res.send({
                 message: "request successful"
-            })
+            });
         }
     } catch (err) {
         switch (err.response.status) {

@@ -1,11 +1,11 @@
 const path = require("path");
 const { userIdHeader } = require(path.resolve("config"));
 const { video: videoRoute } = require(path.resolve("controllers"));
-const { ResponseWithSend, RequestWithUserIdHeader } = require("../utils")
+const { ResponseWithSend, RequestWithUserIdHeader } = require("../utils");
 
 const nock = require("nock");
 const nockInstance = nock("http://localhost:3000")
-    .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+    .defaultReplyHeaders({ 'access-control-allow-origin': '*' });
 
 
 describe("video route", () => {
@@ -22,7 +22,7 @@ describe("video route", () => {
 
         await videoRoute(req, res);
 
-        expect(res.statusCalledWith).toBe(404)
+        expect(res.statusCalledWith).toBe(404);
         expect(res.sendCalledWith).toBe("Not found");
     });
 
@@ -33,7 +33,7 @@ describe("video route", () => {
 
         await videoRoute(req, res);
 
-        expect(res.statusCalledWith).toBe(400)
+        expect(res.statusCalledWith).toBe(400);
         expect(res.sendCalledWith).toBe("Bad request");
     });
 })

@@ -1,14 +1,3 @@
-const res = {
-    statusCalledWith: '',
-    sendCalledWith: '',
-    status: function (status) {
-        this.statusCalledWith = status;
-    },
-    send: function (message) {
-        this.sendCalledWith = message;
-    }
-}
-
 function ResponseWithSend() {
     this.statusCalledWith = '';
     this.sendCalledWith = '';
@@ -40,10 +29,10 @@ function RequestWithUserIdParams(userId) {
 function RequestWithUserIdHeader(header, userId=null) {
     this.params = {
         userId
-    }
+    };
     this.headers = {
         [header]: userId
-    }
+    };
 }
 
 module.exports = {

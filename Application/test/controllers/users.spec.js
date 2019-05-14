@@ -1,11 +1,11 @@
 const path = require("path");
 const mockUsers = require("../_mocks_/users");
 const { users: usersRoute } = require(path.resolve("controllers"));
-const { ResponseWithSend, ResponseWithJson, RequestWithUserIdParams } = require("../utils")
+const { ResponseWithSend, ResponseWithJson, RequestWithUserIdParams } = require("../utils");
 
 const nock = require("nock");
 const nockInstance = nock("http://localhost:3000")
-    .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+    .defaultReplyHeaders({ 'access-control-allow-origin': '*' });
 
 
 describe("Route - all users", () => {
@@ -16,12 +16,12 @@ describe("Route - all users", () => {
             .get("/api/users")
             .reply(200, mockUsers);
 
-        let req = {}
+        let req = {};
         let res = new ResponseWithJson();
 
         await usersRoute.allUsers(req, res);
 
-        expect(res.statusCalledWith).toBe(200)
+        expect(res.statusCalledWith).toBe(200);
         expect(res.jsonCalledWith).toEqual(mockUsers);
 
     });
@@ -32,7 +32,7 @@ describe("Route - all users", () => {
             .get("/api/users")
             .reply(404, {});
 
-        let req = {}
+        let req = {};
         let res = new ResponseWithSend();
 
         await usersRoute.allUsers(req, res);
@@ -52,7 +52,7 @@ describe("Route - all users", () => {
 
         await usersRoute.allUsers(req, res);
 
-        expect(res.statusCalledWith).toBe(500)
+        expect(res.statusCalledWith).toBe(500);
         expect(res.sendCalledWith).toBe("Server error");
     });
 })
@@ -70,7 +70,7 @@ describe("Route - user streams by id", () => {
 
         await usersRoute.getStreamsById(req, res);
 
-        expect(res.statusCalledWith).toBe(200)
+        expect(res.statusCalledWith).toBe(200);
         expect(res.jsonCalledWith).toEqual({ activeStreams: expectedUser.activeStreams });
     })
 
@@ -86,7 +86,7 @@ describe("Route - user streams by id", () => {
 
         await usersRoute.getStreamsById(req, res);
 
-        expect(res.statusCalledWith).toBe(400)
+        expect(res.statusCalledWith).toBe(400);
         expect(res.sendCalledWith).toEqual("Bad request");
     })
 
@@ -101,7 +101,7 @@ describe("Route - user streams by id", () => {
 
         await usersRoute.getStreamsById(req, res);
 
-        expect(res.statusCalledWith).toBe(404)
+        expect(res.statusCalledWith).toBe(404);
         expect(res.sendCalledWith).toEqual("Not found");
     })
 
@@ -116,7 +116,7 @@ describe("Route - user streams by id", () => {
 
         await usersRoute.getStreamsById(req, res);
 
-        expect(res.statusCalledWith).toBe(500)
+        expect(res.statusCalledWith).toBe(500);
         expect(res.sendCalledWith).toEqual("Server error");
     })
 })
