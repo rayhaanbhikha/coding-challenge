@@ -1,10 +1,8 @@
 const express = require("express");
 const app = express();
 
+const { home } = require("../controllers");
 
-app.get("/", (req, res) => {
-    res.status(200);
-    res.send("Home page");
-});
+app.get("/", home);
 
 module.exports = app;
