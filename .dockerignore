@@ -1,0 +1,6 @@
+application/node_modules
+application/test
+application/yarn-error.log
+application/yarn.lock
+.gitignore
+json-server/db.json

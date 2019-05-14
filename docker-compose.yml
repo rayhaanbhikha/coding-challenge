@@ -1,0 +1,30 @@
+version: "3.5"
+services:
+  db:
+    build:
+      context: .
+      target: db
+    container_name: db
+    ports:
+      - "3000:3000"
+    networks:
+      - app
+    command: sh startDB.sh
+
+  app:
+    build:
+      context: .
+      target: app
+    container_name: app
+    environment:
+      PORT: 8080
+      DB_HOST: db
+      DB_PORT: 3000
+    ports:
+      - "8080:8080"
+    networks:
+      - app
+    command: npm run start
+
+networks:
+  app:
