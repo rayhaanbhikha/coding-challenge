@@ -9,8 +9,9 @@ module.exports = async (req, res, next) => {
         if (activeStreams >= concurrentStreamLimit) {
             res.status(403);
             res.send("Active stream limit reached.");
+        } else {
+            next();
         }
-        next();
     } catch (err) {
         console.log(err);
         switch (err.response.status) {
