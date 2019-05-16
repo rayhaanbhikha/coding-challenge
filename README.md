@@ -49,3 +49,15 @@ Navigate to the Json-server directory and run the following script:
 ```
 
 The Json-server will then be accessible on `http://localhost:3000`.
+
+## Scalability
+
+The API service and the Json-server (DB) have already been containerised. This gives us the flexibility to run the application on any OS assuming the Docker runtime has been installed.
+
+However, a single container handling a large number of HTTP calls wouldn’t work. The container would eventually crash. This is where a container orchestration tool such as Kubernetes becomes really useful. 
+
+The declarative state model that Kubernetes offers would also allow us to specify exactly what we want and it would ensure the system continues to look that way. We might have several pods that run the API service and a few pods that host the Json-server. These pods would run the docker container and either use, Kubernetes ingress or some other load balance tool such as NGINX to round-robin external calls to your service. If a container goes down another one spawns up to take its place.
+
+Additionally, I designed the API service using the DAO pattern. The method calls used by the rest of the application to access the data would not be affected by any changes to the method implementations. The method implementations currently use API calls to access the data hosted on the Json-server. But this could easily be replaced with actual database calls.
+
+This ability to decouple the API service from the DB provides a degree of flexibility when it comes to choosing a database implementation. We could use MongoDB, MySQL etc or some cloud solution such as DynamoDB or GCloud Datastore.
