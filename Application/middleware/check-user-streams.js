@@ -13,14 +13,14 @@ module.exports = async (req, res, next) => {
             next();
         }
     } catch (err) {
-        console.log(err);
-        switch (err.response.status) {
+        const errorCode = err.response.status;
+        switch (errorCode) {
             case 400:
-                res.status(err.response.status);
+                res.status(errorCode);
                 res.send("Bad request");
                 break;
             case 404:
-                res.status(err.response.status);
+                res.status(errorCode);
                 res.send("Not found");
                 break;
             default:
