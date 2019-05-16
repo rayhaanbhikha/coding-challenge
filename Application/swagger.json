@@ -1,0 +1,147 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Coding challenge API schema",
+    "description": "An API service that allows users to watch video on demand.",
+    "version": "1"
+  },
+  "paths": {
+    "/api/users": {
+      "get": {
+        "summary": "Returns an array of all the users.",
+        "responses": {
+          "200": {
+            "description": "Returns an array of the users as json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "firstName": {
+                        "type": "string"
+                      },
+                      "lastName": {
+                        "type": "string"
+                      },
+                      "activeStreams": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "example": [
+                  {
+                    "id": "24259589430",
+                    "firstName": "john",
+                    "lastName": "doe",
+                    "email": 3,
+                    "activeStreams": 4
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{userId}/streams": {
+      "get": {
+        "summary": "Returns the number of active streams the user is watching.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the number of active streams the user is watching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "activeStreams": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "activeStreams": 4
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Incorrect request sent."
+          },
+          "404": {
+            "description": "User does not exist."
+          }
+        }
+      }
+    },
+    "/api/video": {
+      "get": {
+        "summary": "Increments the number of streams the user is watching.",
+        "parameters": [
+          {
+            "name": "X-USER-ID",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The number of streams the user is watching has been incremented.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "activeStreams": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "message": "request successful"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Incorrect request sent."
+          },
+          "403": {
+            "description": "The user has reached the concurrent stream limit."
+          },
+          "404": {
+            "description": "User does not exist."
+          }
+        }
+      }
+    }
+  }
+}
