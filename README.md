@@ -9,7 +9,7 @@ I have also provided swagger documentation, which will provide more information 
 ### Docker installation
 To run this api service locally, you will need to have docker installed on your machine.
 
-Navigate to the applications directory and run the following command. Ensure ports `8080` and `3000` are not being used as the containers will bind to these ports on your local machine.
+Navigate to the app directory and run the following command. Ensure ports `8080` and `3000` are not being used as the containers will bind to these ports on your local machine.
 
 ```bash
 $ docker-compose up --build -d
@@ -26,7 +26,7 @@ The Json-server (proxy database) can be accessed on `http://localhost:3000/api`
 
 To run this api service locally you will need `Node.js` installed on your machine. Having `Yarn` installed on your machine is also preferable but `npm` will also suffice (but the commands below will be different slightly).
 
-To start the api service, navigate to the applications directory and run the following commands:
+To start the api service, navigate to the app directory and run the following commands:
 
 ```sh
     #  install npm modules

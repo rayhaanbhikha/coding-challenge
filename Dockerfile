@@ -10,7 +10,7 @@ EXPOSE 3000
 
 FROM base as app
 WORKDIR /home/app
-COPY ./application ./
+COPY ./app ./
 
 EXPOSE 8080
 RUN npm install --production --loglevel=error
